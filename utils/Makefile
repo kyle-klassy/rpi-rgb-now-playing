@@ -33,7 +33,7 @@ video-viewer: video-viewer.o $(RGB_LIBRARY)
 %.o : %.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) -c -o $@ $<
 
-led-image-viewer.o : led-image-viewer-refresh.cc
+led-image-viewer.o : led-image-viewer.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) $(MAGICK_CXXFLAGS) -c -o $@ $<
 
 # We're using a couple of deprecated functions. Pull request to update this to
