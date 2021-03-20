@@ -42,7 +42,6 @@
 #include <Magick++.h>
 #include <magick/image.h>
 
-using rgb_matrix::GPIO;
 using rgb_matrix::Canvas;
 using rgb_matrix::FrameCanvas;
 using rgb_matrix::RGBMatrix;
@@ -223,6 +222,7 @@ static int usage(const char *progname) {
           "For animations: override the delay between frames given in the\n"
           "\t                            gif/stream animation with this value. Use -1 to use default value.\n"
           "\t-V<vsync-multiple>        : For animation (expert): Only do frame vsync-swaps on multiples of refresh (default: 1)\n"
+          "\t                            (Tip: use --led-limit-refresh for stable rate)\n"
 
           "\nOptions affecting display of multiple images:\n"
           "\t-f                        : "
@@ -350,7 +350,7 @@ int main(int argc, char *argv[]) {
 
   // Prepare matrix
   runtime_opt.do_gpio_init = (stream_output == NULL);
-  RGBMatrix *matrix = CreateMatrixFromOptions(matrix_options, runtime_opt);
+  RGBMatrix *matrix = RGBMatrix::CreateFromOptions(matrix_options, runtime_opt);
   if (matrix == NULL)
     return 1;
 
