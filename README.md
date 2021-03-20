@@ -2,9 +2,12 @@
 Scripts to run on a raspberry pi to display the album cover of my currently playing song on Spotify. Uses the rpi-rgb-led-matrix repo as a starting point, which is provided here: https://github.com/hzeller/rpi-rgb-led-matrix. Check out `rpi-rgb-now-playing/utils/README.md` to install the necessary libraries for using the `led-image-viewer` utility and check other `README.md` files within the repo for tips on how to mitigate led flashing and other annoyances.
 
 Use the following commands to install the necessary libgraphicsmagick++ library:
- ``sudo apt-get update``
-``sudo apt-get install libgraphicsmagick++-dev libwebp-dev -y``
-``make led-image-viewer``
+ ```
+ sudo apt-get update
+sudo apt-get install libgraphicsmagick++-dev libwebp-dev -y
+make led-image-viewer
+```
+
 
 ## Installation and file breakdown
 I would suggest cloning this repo into `/home/pi/`. The main bash script is: `rpi-rgb-now-playing/utils/main_updated.sh`, which runs two scripts simultaneously and traps them with a SIGINT handler:
