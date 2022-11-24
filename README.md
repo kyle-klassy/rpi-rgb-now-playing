@@ -17,3 +17,12 @@ I would suggest cloning this repo into `/home/pi/`. The main bash script is: `rp
 
 ## Launch on Startup
 When loading this repo onto an rpi, add the line `sudo /home/pi/rpi-rgb-now-playing/utils/main_updated.sh &` to the end of `/etc/rc.local` (before the exit 0 line) so that the script runs at startup.
+
+## Notes for my own reference
+**To set the network name and password in headless mode:** Easiest way is to just use the command line GUI `sudo raspi-config`.
+
+**To set a static IP address:** Edit file `/etc/dhcpcd.conf` and fill in the details following the template in the below image 
+
+![image](https://user-images.githubusercontent.com/25966125/203809812-60e4c261-44b7-452b-b085-fff615045a4d.png)
+
+I have traditionally used `192.168.1.88/24` as my IP, with `192.168.1.254` as the DNS and router IP, but it'll change as I move. Use `hostname -I` to confirm that you're connected to a network, and use `ip r | grep default` to get the gateway IP.
