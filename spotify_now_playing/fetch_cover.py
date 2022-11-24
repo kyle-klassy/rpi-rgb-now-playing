@@ -6,6 +6,9 @@ import time
 import os
 import signal
 import sys
+import urllib3
+
+urllib3.disable_warnings()
 
 # creating a spotify object to get studio albums
 client_id = "72232609920f4c0eaee97b78b3bf0168"
@@ -22,7 +25,7 @@ def spotifyFetch():
     curr_song_data = ''
 
     try: 
-        resp = requests.get(url=REFRESH_URL + refresh).json()
+        resp = requests.get(url=REFRESH_URL + refresh, verify=False).json()
         curr_song_data = resp["current_song"]
     except:
         with open("/home/pi/rpi-rgb-now-playing/logs/logfile.txt", "a") as f:
