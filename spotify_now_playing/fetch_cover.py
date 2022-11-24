@@ -10,14 +10,13 @@ import sys
 # creating a spotify object to get studio albums
 client_id = "72232609920f4c0eaee97b78b3bf0168"
 client_secret = "2cbe67d7820e410ba89804f8f0f00f0a"
-redir_uri = "http://127.0.0.1:8000/userdata/login/"   # heroku application url 
+redir_uri = "http://127.0.0.1:8000/userdata/login/"   # dummy redirect application uri, doesn't really matter
 refresh = 'AQBlzCWj1YsqCuj8Qo8ZxVVKXYB_dl0Y31TnmP8ttp2ezyE-ULL3NfbjKtG2hDxWfob-ZFI3lJjfV7An5hJXlRz_gJZJVFxbU5OfkGsVnQarnTwkgwa5ErD-idX8ggUfsbE'
-REFRESH_URL = "https://spotify-klklassy.herokuapp.com/userdata/refresh/"
+REFRESH_URL = "https://spotify-fetch-backend.fly.dev/userdata/refresh/"
 
 # matrix configurations
 
-
-def herokuGET():
+def spotifyFetch():
 
     img, artist, song = None, None, None
     curr_song_data = ''
@@ -48,8 +47,8 @@ def main():
 
     while(True):
 
-        # if parsing fails, herokuGET() will return None for all values
-        img, artist, track = herokuGET()
+        # if parsing fails, spotifyFetch() will return None for all values
+        img, artist, track = spotifyFetch()
 
         # if we got a valid image and we're not currently displaying it on the screen
         if img is not None and img != curr_display_img:
